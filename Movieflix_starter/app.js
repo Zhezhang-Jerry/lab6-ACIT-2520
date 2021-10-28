@@ -40,7 +40,7 @@ app.get("/myListQueryString", (req, res) => {
   } else if (!(movieArray.includes(movie2))) {
     movieArray.push(movie2)
   } else {
-    res.send("<p>Please enter new movies")
+    res.send("<p>Please enter new movies</p>")
   }
   res.render("pages/index", {myName, movieArray: movieArray})
 });
