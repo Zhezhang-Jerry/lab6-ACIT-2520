@@ -26,9 +26,8 @@ app.get("/myForm", (req, res) => res.render("pages/myForm", {message}));
 
 app.post("/myForm", (req, res) => {
     let formData = req.body
-    let movieArray = formData.movie.split(",")
+    movieArray = formData.movie.split(",")
     res.render("pages/index", {myName, movieArray: movieArray})
-
 });
 
 app.get("/myListQueryString", (req, res) => {
@@ -36,8 +35,13 @@ app.get("/myListQueryString", (req, res) => {
   let movie2 = req.query.movie2
   if (movie1 === undefined || movie2 === undefined) {
     res.send("<p>Please enter 2 movies</p>")
+  } else if (!(movieArray.includes(movie1))) {
+    movieArray.push(movie1)
+  } else if (!(movieArray.includes(movie2))) {
+    movieArray.push(movie2)
+  } else {
+    res.send("<p>Please enter new movies")
   }
-  let movieArray = [movie1, movie2]
   res.render("pages/index", {myName, movieArray: movieArray})
 });
 
